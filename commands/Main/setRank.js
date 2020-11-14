@@ -9,8 +9,6 @@ module.exports = {
     description: "Changes the rank of a user in roblox",
     run: async (client, message, args) => {
 
-        if (!message.member.roles.cache.some(role => role.name === 'O5 Council') || !message.member.roles.cache.some(role => role.name === 'The Administrator')) return;
-
         const ping = await message.mentions.users.first();
         const rankName = message.content.split(" ").slice(2).join(" ");
         var rank = 0;
@@ -32,7 +30,7 @@ module.exports = {
 
             let oldRank = await nbx.getRankInGroup(config.GROUPID, user)
             if(oldRank == 0) return message.channel.send("This user is no in-group")
-            if(oldRank >= 100) return message.channel.send("I can't rank that high")
+            if(oldRank >= 250) return message.channel.send("I can't rank that high")
 
             switch (rankName.toLowerCase()) {
                 case 'd class' || 'class d':
