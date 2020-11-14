@@ -1,0 +1,16 @@
+{
+  "name": "glacon",
+  "version": "1.0.0",
+  "description": "Discord-ROBLOX Ranking Bot",
+  "main": "glacon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mateo Elias",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.4.1",
+    "noblox.js": "^4.7.3",
+    "node-fetch": "^2.6.1"
+  }
+}
