@@ -4,6 +4,14 @@ const {
 const fetch = require('node-fetch');
 const nbx = require('noblox.js');
 const config = require('../../config.json');
+
+async function roleManager(guildMember, removeRole, addRole){
+    var roleToAdd = guild.roles.cache.find(r => r.name == addRole)
+    var roleToDelete = guild.roles.cache.find(r => r.name == removeRole)
+    guildMember = await guildMember.roles.add(roleToAdd)
+    guildMember = await guildMember.roles.remove(roleToDelete)
+}
+
 module.exports = {
     name: "setrank",
     description: "Changes the rank of a user in roblox",
@@ -92,10 +100,11 @@ module.exports = {
                 inline: true
             })
             botMessage.setFooter('Ranking System Provided by O5-6')
-
+            roleManager(ping.id, oldRankName.name, newRank.name)
             try {
                 await nbx.setRank(config.GROUPID, user, rank)
                 await message.channel.send(botMessage)
+                
             } catch (error) {
                 await message.channel.send("An error has occured:\n ```diff\n- " + error + "\n```")
             }
